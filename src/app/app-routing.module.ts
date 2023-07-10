@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {RegistrationComponent} from "./pages/auth/registration/registration.component";
+import {AuthorizationComponent} from "./pages/auth/authorization/authorization.component";
 
 
 
@@ -11,7 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
+    component: AuthorizationComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
   },
   { path: '**',
    redirectTo: 'home'

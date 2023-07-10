@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="main-content mb-5">
+  <div class="overflow-auto h-100">
+    <div *ngIf="books" class="d-flex flex-wrap justify-content-around">
+      <div class="book-card col-3 m-2" *ngFor="let book of books">
+        <div class="book-title">{{ book.name }}</div>
+        <a routerLink="/auth">
+          <div class="book-img">
+            <img class="w-100" alt="" src="https://source.unsplash.com/random/200x200?sig=2">
+          </div>
+          <div class="book-details">
+            <div class="author">{{ book.author }}</div>
+            <div class="price">{{ book.price }}	&#8381;</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

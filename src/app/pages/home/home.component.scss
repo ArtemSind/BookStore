@@ -1,0 +1,57 @@
+/* Styles for the main container */
+.main-content {
+  margin-bottom: 5rem;
+}
+
+/* Styles for the book card items */
+.book-card {
+  width: 250px; /* Adjust the width as per your design requirements */
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the book title */
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Styles for the book cover image */
+.book-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+/* Styles for the book details */
+.book-details {
+  margin-top: 1rem;
+}
+
+/* Styles for the author name */
+.author {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+/* Styles for the book price */
+.price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555;
+}
+
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
+}
