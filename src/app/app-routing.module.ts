@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {RegistrationComponent} from "./pages/auth/registration/registration.component";
 import {AuthorizationComponent} from "./pages/auth/authorization/authorization.component";
-
-
+import {PersonalOfficeComponent} from "./pages/personal-office/personal-office.component";
+import {BookItemComponent} from "./pages/book-item/book-item.component";
 
 
 const routes: Routes = [
@@ -19,8 +19,17 @@ const routes: Routes = [
     path: 'registration',
     component: RegistrationComponent
   },
-  { path: '**',
-   redirectTo: 'home'
+  {
+    path: 'personal-office',
+    component: PersonalOfficeComponent
+  },
+  {
+    path: 'books',
+    component: BookItemComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
 ];
 
@@ -29,4 +38,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

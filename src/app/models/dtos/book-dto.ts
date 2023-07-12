@@ -13,4 +13,5 @@ export class BookDto implements IBook {
   img: string;
   name: string;
   price: string;
+  description: string;
 }

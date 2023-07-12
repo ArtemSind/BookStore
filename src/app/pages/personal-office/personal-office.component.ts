@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-personal-office',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./personal-office.component.scss']
 })
 export class PersonalOfficeComponent {
+
+  //@Input() currentUser;
 
 }

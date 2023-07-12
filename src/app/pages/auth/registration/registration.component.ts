@@ -37,8 +37,7 @@ export class RegistrationComponent implements OnInit {
 
   registerUser() {
     const data = new UserDto(this.email, this.name, this.password, this.surname);
-    this.authService.registerUser(data);
-    this.openModal();
+    this.authService.registerUser(data).subscribe({next: () => this.openModal()});
   }
 
   protected readonly console = console;

@@ -5,18 +5,20 @@
         <a href="/home"><img src="logo.png" alt="Bookstore Logo"></a>
       </div>
       <ul class="menu">
-        <li><a href="/auth">Личный кабинет</a></li>
-        <li><a href="#">Категории</a></li>
+        <li *ngIf="currentUser"><a href="/personal-office">Личный кабинет</a></li>
+        <li *ngIf="!currentUser"><a href="/auth">Войти</a></li>
+        <li><a href="/personal-office">Категории</a></li>
         <li><a href="#">Авторы</a></li>
-        <li><a href="#">Контакты</a></li>
         <li><a href="#">Корзина</a></li>
+        <li *ngIf="currentUser"><a (click)="exit()" href="#">Выйти</a></li>
+
       </ul>
     </nav>
   </div>
 </header>
 
 <div class="h-100 mb-5">
-  <router-outlet></router-outlet>
+  <router-outlet ></router-outlet>
 </div>
 
 

@@ -21,4 +21,8 @@ export class AuthService {
     return this.rest.authUser(data);
   }
 
+  getCurrentUser(jwt:string) {
+    return this.rest.getCurrentUser(jwt);
+  }
+
 }

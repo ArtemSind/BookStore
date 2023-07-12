@@ -4,4 +4,5 @@ export interface IBook {
   author: string,
   price: string,
   img: string
+  description: string
 }

@@ -1,8 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {CredentialsDto} from "../../../models/dtos/credentials-dto";
-import {Observable} from "rxjs";
+import {firstValueFrom, Observable} from "rxjs";
 import {IAuthResult} from "../../../models/interfaces/auth-result";
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
+import {IUser} from "../../../models/interfaces/user";
+import {UserDto} from "../../../models/dtos/user-dto";
 
 @Component({
   selector: 'app-authorization',
@@ -16,7 +20,11 @@ export class AuthorizationComponent implements OnInit, OnDestroy  {
   password: string;
   email: string;
 
-  constructor(private authService: AuthService) {
+  @Output() currentUser = new EventEmitter<IUser>();
+
+  constructor(private authService: AuthService,
+              private cookieService: CookieService,
+              private router: Router) {
   }
 
   ngOnDestroy(): void {
@@ -25,9 +33,18 @@ export class AuthorizationComponent implements OnInit, OnDestroy  {
   ngOnInit(): void {
   }
 
-  authUser(): Observable<IAuthResult> {
+  async authUser() {
     const data = new CredentialsDto(this.email, this.password);
-    return this.authService.authUser(data);
+
+    this.authService.authUser({email: this.email, password: this.password}).subscribe(
+      {
+        next: (data) => {
+          this.cookieService.set('auth', data.access_token);
+          this.router.navigateByUrl("/home").then(() => {window.location.reload()});
+        }
+      })
+
+
   }
 
   protected readonly console = console;

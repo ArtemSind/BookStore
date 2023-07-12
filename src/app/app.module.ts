@@ -14,6 +14,9 @@ import {ButtonModule} from "primeng/button";
 import { ModalComponent } from './pages/auth/registration/modal/modal.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { PersonalOfficeComponent } from './pages/personal-office/personal-office.component';
+import {CookieService} from "ngx-cookie-service";
+import { BookItemComponent } from './pages/book-item/book-item.component';
+import { BasketComponent } from './pages/basket/basket.component';
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { PersonalOfficeComponent } from './pages/personal-office/personal-office
     AuthorizationComponent,
     RegistrationComponent,
     ModalComponent,
-    PersonalOfficeComponent
+    PersonalOfficeComponent,
+    BookItemComponent,
+    BasketComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +39,7 @@ import { PersonalOfficeComponent } from './pages/personal-office/personal-office
     InputTextModule,
     ButtonModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

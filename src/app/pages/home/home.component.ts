@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IBook} from "../../models/interfaces/book";
-import {BookDto} from "../../models/dtos/book-dto";
+import {Router} from "@angular/router";
+import {BooksService} from "../../services/books.service";
 
 @Component({
   selector: 'app-home',
@@ -9,38 +10,22 @@ import {BookDto} from "../../models/dtos/book-dto";
 })
 export class HomeComponent implements OnInit {
 
+  constructor(private router: Router,
+              private bookService: BooksService) {
+  }
+
   books: IBook[];
 
   ngOnInit(): void {
-    this.books = [new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69'),
-      new BookDto('John Dou', 'img', 'Super book', '69.69')]
+    this.bookService.getAllBooks().subscribe({next: (data) =>
+      {
+        this.books = data;
+        console.log(data);
+      }
+    });
+  }
+
+  goToBookInfoPage(item: IBook): void {
+    this.router.navigate([`/books`], {queryParams: {id: item._id}});
   }
 }
