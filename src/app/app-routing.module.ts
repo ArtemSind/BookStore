@@ -4,6 +4,7 @@ import {RegistrationComponent} from "./pages/auth/registration/registration.comp
 import {AuthorizationComponent} from "./pages/auth/authorization/authorization.component";
 import {PersonalOfficeComponent} from "./pages/personal-office/personal-office.component";
 import {BookItemComponent} from "./pages/book-item/book-item.component";
+import {BasketComponent} from "./pages/basket/basket.component";
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'books',
     component: BookItemComponent
+  },
+  {
+    path: 'basket',
+    component: BasketComponent
   },
   {
     path: '**',

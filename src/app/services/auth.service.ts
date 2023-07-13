@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private rest: RestService) { }
 
 
-  registerUser(data: IUser): Observable<IUser> {
+  registerUser(data: IUser) {
     return this.rest.registerUser(data)
   }
 

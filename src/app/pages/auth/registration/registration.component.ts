@@ -3,6 +3,9 @@ import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
 import {ModalComponent} from "./modal/modal.component";
 import {UserDto} from "../../../models/dtos/user-dto";
 import {AuthService} from "../../../services/auth.service";
+import {IUser} from "../../../models/interfaces/user";
+import {BasketService} from "../../../services/basket.service";
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-registration',
@@ -24,7 +27,8 @@ export class RegistrationComponent implements OnInit {
   passwordRepeatPlaceholder:string = 'Повторите пароль';
 
   constructor(private modalService: NgbModal,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private basketService: BasketService) { }
 
   ngOnInit(): void {
   }
@@ -32,13 +36,17 @@ export class RegistrationComponent implements OnInit {
 
   openModal() {
     const modalRef = this.modalService.open(ModalComponent, {windowClass: 'modal-class'});
-    modalRef.componentInstance.name = 'John'; // Optional: Pass data to the modal
   }
 
-  registerUser() {
-    const data = new UserDto(this.email, this.name, this.password, this.surname);
-    this.authService.registerUser(data).subscribe({next: () => this.openModal()});
-  }
+  async registerUser() {
+    const data : IUser = {email: this.email, name: this.name, password: this.password, surname: this.surname};
+    const user: any = await firstValueFrom(this.authService.registerUser(data));
+
+    console.log(user._id)
+
+    this.basketService.createBasket(user._id).subscribe({next: () => this.openModal()});
+    }
+
 
   protected readonly console = console;
 }

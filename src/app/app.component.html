@@ -1,3 +1,4 @@
+<div class="all-content d-flex flex-column h-100">
 <header>
   <div class="container">
     <nav>
@@ -9,7 +10,7 @@
         <li *ngIf="!currentUser"><a href="/auth">Войти</a></li>
         <li><a href="/personal-office">Категории</a></li>
         <li><a href="#">Авторы</a></li>
-        <li><a href="#">Корзина</a></li>
+        <li><a href="/basket">Корзина</a></li>
         <li *ngIf="currentUser"><a (click)="exit()" href="#">Выйти</a></li>
 
       </ul>
@@ -17,13 +18,13 @@
   </div>
 </header>
 
-<div class="h-100 mb-5">
+<div class="main-router">
   <router-outlet ></router-outlet>
 </div>
 
 
 
-<footer>
+<footer class="mt-auto">
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-4">
@@ -52,3 +53,6 @@
     </div>
   </div>
 </footer>
+
+</div>
+
