@@ -7,6 +7,7 @@ import {IAuthResult} from "../models/interfaces/auth-result";
 import {IBook} from "../models/interfaces/book";
 import {IBasket} from "../models/interfaces/basket";
 import {RemoveBookDto} from "../models/dtos/remove-book-dto";
+import {ChangePasswordDto} from "../models/dtos/change-password-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class RestService {
 
   authUser(data: ICredentials) {
     return this.http.post<IAuthResult>('http://localhost:3000/auth/authorize', data);
+  }
+
+  getUserByEmail(email: string) {
+    return this.http.get<IUser>(`http://localhost:3000/auth/${email}`)
+  }
+
+  changePassword(body: ChangePasswordDto) {
+    return this.http.post(`http://localhost:3000/auth/change-password`, body)
   }
 
   getCurrentUser(jwt: string) {

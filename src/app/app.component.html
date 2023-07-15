@@ -3,14 +3,19 @@
   <div class="container">
     <nav>
       <div class="logo">
-        <a href="/home"><img src="logo.png" alt="Bookstore Logo"></a>
+        <a href="/home"><img src="assets/img/—Pngtree—white%20book%20icon_4628601.png" alt="Bookstore Logo"></a>
       </div>
       <ul class="menu">
+        <li><a href="/home">Книги</a></li>
         <li *ngIf="currentUser"><a href="/personal-office">Личный кабинет</a></li>
         <li *ngIf="!currentUser"><a href="/auth">Войти</a></li>
-        <li><a href="/personal-office">Категории</a></li>
-        <li><a href="#">Авторы</a></li>
-        <li><a href="/basket">Корзина</a></li>
+        <li><a href="/authors">Авторы</a></li>
+        <li><a href="/about">О нас</a></li>
+
+
+        <li *ngIf="currentUser"><a href="/basket">Корзина</a></li>
+        <li *ngIf="!currentUser"><a href="/auth">Корзина</a></li>
+
         <li *ngIf="currentUser"><a (click)="exit()" href="#">Выйти</a></li>
 
       </ul>
@@ -28,21 +33,22 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-4">
-        <h3>About Us</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum erat eget ultricies ullamcorper.</p>
+        <h3>О нас</h3>
+        <p>Bookscape - ваш уникальный онлайн магазин книг. Широкий выбор книг всех жанров - от классики до фантастики, от детских до саморазвития. Простая и удобная платформа. Найдите, заказывайте и получайте книгу вашей мечты. Источник вдохновения и знаний!</p>
       </div>
-      <div class="col-md-4">
-        <h3>Contact Us</h3>
+      <div class="col-md-2">
+        <h3>Контакты</h3>
         <p>123 Bookstore Street, City</p>
         <p>Phone: 123-456-7890</p>
         <p>Email: info@example.com</p>
       </div>
       <div class="col-md-4">
-        <h3>Follow Us</h3>
+        <h3>Следите за нами</h3>
         <ul class="social-icons">
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa fa-vk"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-telegram"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
         </ul>
       </div>
     </div>

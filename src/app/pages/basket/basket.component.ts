@@ -5,6 +5,9 @@ import {IUser} from "../../models/interfaces/user";
 import {BasketService} from "../../services/basket.service";
 import {IBasket} from "../../models/interfaces/basket";
 import {firstValueFrom} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalComponent} from "../auth/registration/modal/modal.component";
+import {BasketModalComponent} from "./basket-modal/basket-modal.component";
 
 @Component({
   selector: 'app-basket',
@@ -15,7 +18,8 @@ export class BasketComponent implements OnInit {
 
   constructor(private cookieService: CookieService,
               private authService: AuthService,
-              private basketService: BasketService) {
+              private basketService: BasketService,
+              private modalService: NgbModal) {
   }
 
   currentUser: IUser | null
@@ -56,5 +60,9 @@ export class BasketComponent implements OnInit {
     if (this.currentUser?._id != null && bookId != null)
     await firstValueFrom(this.basketService.removeBookFromBasket(this.currentUser?._id, bookId))
     window.location.reload();
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(BasketModalComponent, {windowClass: 'modal-class'});
   }
 }

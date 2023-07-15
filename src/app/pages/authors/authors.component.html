@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Список авторов</h1>
+
+  <div class="author-list">
+    <div *ngFor="let author of authors" [ngClass]="{'expanded': author.showBooks}">
+      <div class="author-block" (click)="toggleBooks(author)">
+        <div class="author-header">
+          <span class="author-name">{{ author.name}}</span>
+          <span class="toggle-icon">
+            <i class="fas" [ngClass]="{'fa-chevron-up': author.showBooks, 'fa-chevron-down': !author.showBooks}"></i>
+          </span>
+        </div>
+        <ul class="book-list" [ngStyle]="{'max-height': author.showBooks ? getHeight(author.books.length) : '0px', 'transition': 'max-height 0.3s ease'}">
+          <li (click)="goToBookInfoPage(book)" *ngFor="let book of author.books">{{ book.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

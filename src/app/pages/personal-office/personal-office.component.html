@@ -1,1 +1,19 @@
-<p>personal-office works!</p>
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+      <div class="card">
+        <h1>Личный кабинет</h1>
+
+        <h2>Информация о пользователе</h2>
+        <p><strong>Имя:</strong> {{currentUser?.name}}</p>
+        <p><strong>Фамилия:</strong> {{currentUser?.surname}}</p>
+        <p><strong>Электронный адрес:</strong> {{currentUser?.email}}</p>
+
+        <!-- Дополнительные поля и информация о пользователе могут быть добавлены здесь -->
+
+        <button class="btn btn-dark" (click)="openModal()">Изменить пароль</button>
+      </div>
+    </div>
+  </div>
+</div>

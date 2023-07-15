@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author-list {
+  width: 100%;
+}
+
+.author-block {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.author-block:hover {
+  background-color: #e8e8e8;
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.author-name {
+  flex-grow: 1;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.toggle-icon {
+  margin-left: 10px;
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.book-list li {
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.expanded {
+  overflow: visible;
+}
+

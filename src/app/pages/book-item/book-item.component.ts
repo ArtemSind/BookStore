@@ -7,19 +7,22 @@ import {AuthService} from "../../services/auth.service";
 import {CookieService} from "ngx-cookie-service";
 import {IUser} from "../../models/interfaces/user";
 import {firstValueFrom} from "rxjs";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-book-item',
   templateUrl: './book-item.component.html',
   styleUrls: ['./book-item.component.scss']
 })
-export class BookItemComponent implements OnInit{
+export class BookItemComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private bookService: BooksService,
               private basketService: BasketService,
               private authService: AuthService,
-              private cookieService: CookieService) {
+              private cookieService: CookieService,
+              private messageService: MessageService,
+              private router: Router) {
   }
 
   book: IBook | null;
@@ -33,7 +36,7 @@ export class BookItemComponent implements OnInit{
 
     this.bookService.getBookById(queryIdParam).subscribe(
       {
-      next: (value) =>  this.book = value
+        next: (value) => this.book = value
       })
 
     const key = this.cookieService.get('auth')
@@ -43,16 +46,24 @@ export class BookItemComponent implements OnInit{
 
     this.authService.getCurrentUser(key)
       .subscribe({
-        next: (data) => this.currentUser = data}
+          next: (data) => this.currentUser = data
+        }
       );
 
   }
 
   async addToBasket() {
-    if (this.currentUser?._id != null && this.book != null)
+    if (this.currentUser?._id == null || this.book == null)
     {
-      await firstValueFrom(this.basketService.addBookToBasket(this.currentUser._id, this.book))
+      this.router.navigateByUrl('/auth');
+      return;
     }
+
+
+    await firstValueFrom(this.basketService.addBookToBasket(this.currentUser._id, this.book))
+
+
+    this.messageService.add({severity: "success", summary: "Товар добавлен в корзину"})
   }
 
 

@@ -27,10 +27,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 90%;
 }
 
 .logo img {
-  max-height: 50px;
+  max-height: 40px;
 }
 
 .menu {
@@ -41,7 +42,7 @@ nav {
 }
 
 .menu li {
-  margin-left: 20px;
+  margin: 0 30px;
 }
 
 .menu li:first-child {
@@ -69,7 +70,7 @@ footer {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -110,6 +111,11 @@ p {
 
 .bottom-bar p {
   margin: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 767px) {

@@ -16,7 +16,7 @@
       <td>{{ book.author }}</td>
       <td>{{ book.price }} &#8381;</td>
       <td>
-        <button class="btn btn-danger btn-sm" (click)="remove(book._id)" >Remove</button>
+        <button class="btn btn-danger btn-sm" (click)="remove(book._id)" >Удалить</button>
       </td>
     </tr>
     </tbody>
@@ -24,7 +24,7 @@
 
   <div class="text-right">
     <h4>Всего: {{ getTotal() }} &#8381;</h4>
-    <button class="btn btn-primary" ng-click="checkout()">Оплатить</button>
+    <button class="btn btn-dark" (click)="openModal()">Оплатить</button>
   </div>
 
 </div>

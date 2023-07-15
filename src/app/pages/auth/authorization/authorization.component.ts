@@ -7,6 +7,7 @@ import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
 import {IUser} from "../../../models/interfaces/user";
 import {UserDto} from "../../../models/dtos/user-dto";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-authorization',
@@ -14,7 +15,7 @@ import {UserDto} from "../../../models/dtos/user-dto";
   styleUrls: ['./authorization.component.scss']
 })
 export class AuthorizationComponent implements OnInit, OnDestroy  {
-  emailPlaceholder: string = 'Логин';
+  emailPlaceholder: string = 'Email';
   passwordPlaceholder: string = 'Пароль';
 
   password: string;
@@ -24,7 +25,8 @@ export class AuthorizationComponent implements OnInit, OnDestroy  {
 
   constructor(private authService: AuthService,
               private cookieService: CookieService,
-              private router: Router) {
+              private router: Router,
+              private messageService: MessageService) {
   }
 
   ngOnDestroy(): void {
@@ -41,7 +43,8 @@ export class AuthorizationComponent implements OnInit, OnDestroy  {
         next: (data) => {
           this.cookieService.set('auth', data.access_token);
           this.router.navigateByUrl("/home").then(() => {window.location.reload()});
-        }
+        },
+        error: () => this.messageService.add({severity: 'warn', summary: 'Пользователь с такими учётными данными не найден'})
       })
 
 

@@ -5,6 +5,8 @@ import {AuthorizationComponent} from "./pages/auth/authorization/authorization.c
 import {PersonalOfficeComponent} from "./pages/personal-office/personal-office.component";
 import {BookItemComponent} from "./pages/book-item/book-item.component";
 import {BasketComponent} from "./pages/basket/basket.component";
+import {AboutUsComponent} from "./pages/about-us/about-us.component";
+import {AuthorsComponent} from "./pages/authors/authors.component";
 
 
 const routes: Routes = [
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'basket',
     component: BasketComponent
+  },
+  {
+    path: 'authors',
+    component: AuthorsComponent
+  },
+  {
+    path: 'about',
+    component: AboutUsComponent
   },
   {
     path: '**',

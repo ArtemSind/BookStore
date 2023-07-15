@@ -17,6 +17,14 @@ import { PersonalOfficeComponent } from './pages/personal-office/personal-office
 import {CookieService} from "ngx-cookie-service";
 import { BookItemComponent } from './pages/book-item/book-item.component';
 import { BasketComponent } from './pages/basket/basket.component';
+import {MessageService} from "primeng/api";
+import {ToastModule} from "primeng/toast";
+import {NgxMaskDirective} from "ngx-mask";
+import { OfficeModalComponent } from './pages/personal-office/office-modal/office-modal.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AuthorsComponent } from './pages/authors/authors.component';
+import {NgOptimizedImage} from "@angular/common";
+import { BasketModalComponent } from './pages/basket/basket-modal/basket-modal.component';
 
 
 @NgModule({
@@ -27,7 +35,11 @@ import { BasketComponent } from './pages/basket/basket.component';
     ModalComponent,
     PersonalOfficeComponent,
     BookItemComponent,
-    BasketComponent
+    BasketComponent,
+    OfficeModalComponent,
+    AboutUsComponent,
+    AuthorsComponent,
+    BasketModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,9 +49,12 @@ import { BasketComponent } from './pages/basket/basket.component';
     HttpClientModule,
     FormsModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    NgxMaskDirective,
+    NgOptimizedImage
   ],
-  providers: [CookieService],
+  providers: [CookieService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
